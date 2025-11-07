@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجتمع الفضاء للعموم</title>
+    <meta name="description" content="مجتمع تطوعي يفتح أبواب علوم الفضاء والتقنية والفلك للجميع">
+    <meta property="og:title" content="مجتمع الفضاء للعموم">
+    <meta property="og:description" content="مجتمع تطوعي يفتح أبواب علوم الفضاء والتقنية والفلك للجميع">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0B1020;
+            --bg-secondary: rgba(11, 16, 32, 0.8);
+            --bg-card: rgba(30, 41, 59, 0.5);
+            --accent-cyan: #22D3EE;
+            --accent-green: #34D399;
+            --text-primary: #E2E8F0;
+            --text-secondary: rgba(226, 232, 240, 0.7);
+            --header-height: 70px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Tajawal', 'Cairo', 'Noto Kufi Arabic', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-green);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--accent-cyan);
+            color: var(--bg-color);
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(11, 16, 32, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            height: var(--header-height);
+            border-bottom: 1px solid rgba(34, 211, 238, 0.2);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            height: 32px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-primary);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: var(--header-height);
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: calc(100vh - var(--header-height));
+            background-color: rgba(11, 16, 32, 0.98);
+            transition: right 0.3s ease;
+            padding: 2rem;
+            border-left: 1px solid rgba(34, 211, 238, 0.2);
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav ul {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Main content styles */
+        main {
+            margin-top: var(--header-height);
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-cyan);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: var(--text-secondary);
+        }
+
+        /* Hero section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: rgba(34, 211, 238, 0.15);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-cyan);
+            border: 1px solid rgba(34, 211, 238, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-lead {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-cyan);
+            color: var(--bg-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-green);
+            color: var(--bg-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--accent-cyan);
+        }
+
+        .btn-ghost:hover {
+            background-color: rgba(34, 211, 238, 0.1);
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        /* Cards section */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 10px 30px rgba(34, 211, 238, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-cyan);
+        }
+
+        .card p {
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        /* KPI grid */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .kpi-item {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .kpi-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-green);
+        }
+
+        .kpi-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .kpi-label {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(34, 211, 238, 0.2);
+            background-color: var(--bg-secondary);
+        }
+
+        footer p {
+            color: var(--text-secondary);
+        }
+
+        footer a {
+            color: var(--accent-cyan);
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-lead {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Focus styles for accessibility */
+        :focus {
+            outline: 2px solid var(--accent-cyan);
+            outline-offset: 2px;
+        }
+
+        /* Enhanced animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">تجاوز إلى المحتوى</a>
+
+    <header>
+        <div class="container header-container">
+            <a href="#" aria-label="الصفحة الرئيسية">
+                <img src="./assets/logo/logo-icon-white.svg" alt="شعار مجتمع الفضاء" class="logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#about">نبذة</a></li>
+                    <li><a href="#activities">أنشطتنا</a></li>
+                    <li><a href="#ecosystem">منظومة الفضاء</a></li>
+                    <li><a href="#brand">دليل الهوية</a></li>
+                    <li><a href="#join">انضمّوا إلينا</a></li>
+                </ul>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="فتح القائمة">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+        <div class="mobile-nav" id="mobile-nav">
+            <ul>
+                <li><a href="#about">نبذة</a></li>
+                <li><a href="#activities">أنشطتنا</a></li>
+                <li><a href="#ecosystem">منظومة الفضاء</a></li>
+                <li><a href="#brand">دليل الهوية</a></li>
+                <li><a href="#join">انضمّوا إلينا</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="container">
+                <div class="badge">مجتمع • فضاء • للعموم</div>
+                <h1>نُقرِّب علوم الفضاء للجميع.</h1>
+                <p class="hero-lead">مجتمع تطوعي يفتح أبواب علوم الفضاء والتقنية والفلك للجميع عبر لقاءات، وورش تطبيقية، وتجارب ممتعة مناسبة لكل الأعمار.</p>
+                <div class="hero-buttons">
+                    <a href="#join" class="btn btn-primary">انضمّوا إلى المجتمع</a>
+                    <a href="#activities" class="btn btn-ghost">تعرّفوا على الأنشطة</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">نبذة عن المجتمع</h2>
+                <p class="section-subtitle">نحن مجموعة مفتوحة تُنمّي الشغف بالفضاء والتقنيات المرتبطة به عبر محتوى مبسّط وفعاليات شاملة.</p>
+                <div class="cards-grid">
+                    <div class="card">
+                        <h3>رسالتنا</h3>
+                        <p>إتاحة معارف الفضاء للجميع، إلهام الجيل القادم، وربط الفضوليين بفرص تعلم ومشاريع واقعية.</p>
+                    </div>
+                    <div class="card">
+                        <h3>قيمنا</h3>
+                        <p>الفضول • المجتمع • المصداقية • التعلم بالممارسة • الأثر المحلي.</p>
+                    </div>
+                    <div class="card">
+                        <h3>لمن؟</h3>
+                        <p>طلاب، معلمون، عائلات، هواة، ومهتمون ببداياتهم المهنية في مجالات الفضاء والفلك.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="activities">
+            <div class="container">
+                <h2 class="section-title">أنشطتنا</h2>
+                <p class="section-subtitle">لقاءات عامة • ورش عملية • مشاهدة السماء • شراكات مع المدارس والأندية</p>
+                <div class="cards-grid">
+                    <div class="card">
+                        <h3>حوارات ومحاضرات</h3>
+                        <p>جلسات ودّية تشرح مفاهيم الفلك والأقمار الصناعية ومنظومة الفضاء محليًا.</p>
+                    </div>
+                    <div class="card">
+                        <h3>ورش تطبيقية</h3>
+                        <p>تجارب بسيطة: معالجة صور، مفاهيم المدار، واستكشافات عملية ممتعة.</p>
+                    </div>
+                    <div class="card">
+                        <h3>مدارس وأندية STEM</h3>
+                        <p>تعاون مع المدارس والأندية لإقامة فعاليات وأنشطة مبسّطة يسهل تكرارها.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ecosystem">
+            <div class="container">
+                <h2 class="section-title">منظومة الفضاء</h2>
+                <p class="section-subtitle">من مراقبة الأرض وخدمات الأقمار الصناعية إلى التصنيع والإطلاق—المنظومة تتسع ويكبر دور المجتمع.</p>
+                <div class="kpi-grid">
+                    <div class="kpi-item">
+                        <div class="kpi-number">↑</div>
+                        <div class="kpi-label">نمو متزايد</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="kpi-number">+</div>
+                        <div class="kpi-label">شركات ناشئة</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="kpi-number">★</div>
+                        <div class="kpi-label">تعليم ووعي</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="join">
+            <div class="container">
+                <h2 class="section-title">انضمّوا إلينا</h2>
+                <p class="section-subtitle">كونوا أول من يعرف عن الأنشطة والورش، وتعرّفوا على رفقاء الاستكشاف.</p>
+                <div class="hero-buttons">
+                    <a href="https://example.com/join" class="btn btn-primary" target="_blank" rel="noopener noreferrer">رابط المجموعة</a>
+                    <a href="mailto:hello@example.org" class="btn btn-ghost">راسلونا</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 مجتمع الفضاء للعموم | <a href="mailto:hello@example.org">hello@example.org</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileNav = document.getElementById('mobile-nav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuBtn.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
