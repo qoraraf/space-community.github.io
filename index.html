@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مجتمع الفضاء للعموم</title>
+    <title>مجتمع فضائنا سعودي</title>
     <meta name="description" content="مجتمع تطوعي يفتح أبواب علوم الفضاء والتقنية والفلك للجميع">
-    <meta property="og:title" content="مجتمع الفضاء للعموم">
+    <meta property="og:title" content="مجتمع فضائنا سعودي">
     <meta property="og:description" content="مجتمع تطوعي يفتح أبواب علوم الفضاء والتقنية والفلك للجميع">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -199,6 +199,10 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            background-image: url('https://z-cdn-media.chatglm.cn/files/8be143ac-8b00-438e-8ffc-ba01b9384514_hero-space.jpg?auth_key=1862533763-f1c6a08a413344e09050ee206683ac81-0-1317513e8086e77025773f42473bc689');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         .hero::before {
@@ -208,14 +212,19 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.1) 0%, transparent 70%);
-            z-index: -1;
+            background: linear-gradient(to bottom, rgba(11, 16, 32, 0.5), rgba(11, 16, 32, 0.8));
+            z-index: 1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
         }
 
         .badge {
             display: inline-block;
             padding: 0.5rem 1rem;
-            background-color: rgba(34, 211, 238, 0.15);
+            background-color: rgba(34, 211, 238, 0.2);
             border-radius: 50px;
             font-size: 0.9rem;
             margin-bottom: 1.5rem;
@@ -231,6 +240,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
         }
 
         .hero-lead {
@@ -238,7 +248,8 @@
             max-width: 800px;
             margin: 0 auto 2.5rem;
             line-height: 1.7;
-            color: var(--text-secondary);
+            color: var(--text-primary);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
 
         .hero-buttons {
@@ -413,14 +424,13 @@
     <header>
         <div class="container header-container">
             <a href="#" aria-label="الصفحة الرئيسية">
-                <img src="./assets/logo/logo-icon-white.svg" alt="شعار مجتمع الفضاء" class="logo">
+                <img src="./assets/logo/logo-icon-white.svg" alt="شعار مجتمع فضائنا سعودي" class="logo">
             </a>
             <nav>
                 <ul>
                     <li><a href="#about">نبذة</a></li>
                     <li><a href="#activities">أنشطتنا</a></li>
                     <li><a href="#ecosystem">منظومة الفضاء</a></li>
-                    <li><a href="#brand">دليل الهوية</a></li>
                     <li><a href="#join">انضمّوا إلينا</a></li>
                 </ul>
                 <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="فتح القائمة">
@@ -435,7 +445,6 @@
                 <li><a href="#about">نبذة</a></li>
                 <li><a href="#activities">أنشطتنا</a></li>
                 <li><a href="#ecosystem">منظومة الفضاء</a></li>
-                <li><a href="#brand">دليل الهوية</a></li>
                 <li><a href="#join">انضمّوا إلينا</a></li>
             </ul>
         </div>
@@ -444,7 +453,6 @@
     <main id="main-content">
         <section class="hero">
             <div class="container">
-                <div class="badge">مجتمع • فضاء • للعموم</div>
                 <h1>نُقرِّب علوم الفضاء للجميع.</h1>
                 <p class="hero-lead">مجتمع تطوعي يفتح أبواب علوم الفضاء والتقنية والفلك للجميع عبر لقاءات، وورش تطبيقية، وتجارب ممتعة مناسبة لكل الأعمار.</p>
                 <div class="hero-buttons">
@@ -531,7 +539,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2023 مجتمع الفضاء للعموم | <a href="mailto:hello@example.org">hello@example.org</a></p>
+            <p>&copy; 2025 مجتمع فضائنا سعودي | <a href="mailto:hello@example.org">hello@example.org</a></p>
         </div>
     </footer>
 
